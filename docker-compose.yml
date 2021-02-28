@@ -29,7 +29,7 @@ services:
         max-size: "10M"
         max-file: "10"
   api-gateway:
-    image: 11060/api-gateway:20210228051021
+    image: 11060/api-gateway:20210228124720
     container_name: api-gateway
     restart: always
     privileged: true
