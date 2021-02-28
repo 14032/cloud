@@ -3,7 +3,9 @@
 <br>
 <b>Spring Cloud & Kubernetes & Istio</b>
 <br><br>
+<a title="Build Status" target="_blank" href="https://travis-ci.com/14032/cloud"><img src="https://img.shields.io/travis/14032/cloud.svg?style=flat-square"></a>
 <a title="MIT" target="_blank" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square"></a>
+<br><br>
 <a title="GitHub Watchers" target="_blank" href="https://github.com/14032/cloud/watchers"><img src="https://img.shields.io/github/watchers/14032/cloud.svg?label=Watchers&style=social"></a>  
 <a title="GitHub Stars" target="_blank" href="https://github.com/14032/cloud/stargazers"><img src="https://img.shields.io/github/stars/14032/cloud.svg?label=Stars&style=social"></a>  
 <a title="GitHub Forks" target="_blank" href="https://github.com/14032/cloud/network/members"><img src="https://img.shields.io/github/forks/14032/cloud.svg?label=Forks&style=social"></a>  
@@ -54,4 +56,3 @@
 ![image](assets/apollo.png) 
 
 ![image](assets/actuator.jpg) 
-
