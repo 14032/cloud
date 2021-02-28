@@ -1,0 +1,34 @@
+server:
+  port: 9099
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 10000
+        read-timeout: 20000
+      service-test:
+        connect-timeout: 10000
+        read-timeout: 20000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://aAuHAd:aAuHAd@eureka-server:18761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    registry-fetch-interval-seconds: 15
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+
+cloud:
+  swagger:
+    enabled: true
+    title: 订单服务
+    description: ORDER SERVER 接口文档
+    version: 1.0
+    base-package: com.rangertech.order

@@ -1,0 +1,26 @@
+server:
+  port: 9097
+  tomcat:
+    uri-encoding: UTF-8
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://aAuHAd:aAuHAd@127.0.0.1:18761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    registry-fetch-interval-seconds: 15
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+
+cloud:
+  swagger:
+    enabled: true
+    title: 用户服务
+    description: USER SERVER 接口文档
+    version: 1.0
+    base-package: com.rangertech.basics.controller

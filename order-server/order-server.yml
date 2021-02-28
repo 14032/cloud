@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cloud
+  labels:
+    app: order-server
+  name: order-server
+spec:
+  ports:
+  - name: tcp
+    port: 9099
+    protocol: TCP
+    targetPort: 9099
+  selector:
+    app: order-server
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cloud
+  name: order-server
+spec:
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-server
+  template: 
+    metadata:
+      namespace: cloud
+      labels:
+        app: order-server
+        version: v1
+    spec:    
+      containers:
+      - name: order-server
+        image: 11060/order-server:20210228051053
+        resources:
+          limits:
+            memory: 536Mi
+          requests:
+            memory: 512Mi
+        ports:
+        - containerPort: 9099
+        volumeMounts:
+        - name: server-log
+          mountPath: /opt/logs/order-server
+        livenessProbe:
+          tcpSocket:
+            port: 9099
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10          
+        readinessProbe:
+          tcpSocket:
+            port: 9099
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10
+      volumes:
+      - name: server-log
+        emptyDir: {}

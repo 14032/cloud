@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cloud
+  labels:
+    app: api-gateway
+  name: api-gateway
+spec:
+  ports:
+  - name: tcp
+    port: 4000
+    protocol: TCP
+    targetPort: 4000
+    nodePort: 32000
+  selector:
+    app: api-gateway
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cloud
+  name: api-gateway
+spec:
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template: 
+    metadata:
+      namespace: cloud
+      labels:
+        app: api-gateway
+        version: v1
+    spec:    
+      containers:
+      - name: api-gateway
+        image: 11060/api-gateway:20210228051021
+        resources:
+          limits:
+            memory: 536Mi
+          requests:
+            memory: 512Mi
+        ports:
+        - containerPort: 4000
+        volumeMounts:
+        - name: server-log
+          mountPath: /opt/logs/api-gateway
+        livenessProbe:
+          tcpSocket:
+            port: 4000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10          
+        readinessProbe:
+          tcpSocket:
+            port: 4000
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10
+      volumes:
+      - name: server-log
+        emptyDir: {}

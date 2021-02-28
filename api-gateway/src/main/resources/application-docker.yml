@@ -1,0 +1,65 @@
+server:
+  port: 4000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://aAuHAd:aAuHAd@eureka-server:18761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    registry-fetch-interval-seconds: 15
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - AddResponseHeader=X-Response-Default, Spring Cloud Gateway
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+
+      routes:
+        - id: user-server
+          uri: lb://user-server
+          predicates:
+            - Path=/user-server/**
+          filters:
+            - StripPrefix=1
+
+        - id: auth-server
+          uri: lb://auth-server
+          predicates:
+            - Path=/auth-server/**
+          filters:
+            - StripPrefix=1
+            - SsoAuth=true
+#            - name: StripPrefix
+#              args:
+#                parts: 1
+#            - name: SsoAuth
+#              args:
+#                enabled: true
+
+        - id: order-server
+          uri: lb://order-server
+          predicates:
+            - Path=/order-server/**
+          filters:
+            - StripPrefix=1
+
+swagger:
+  enable: true
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: trace

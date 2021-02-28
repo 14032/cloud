@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: ${env}
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    gateway:
+      enabled: true

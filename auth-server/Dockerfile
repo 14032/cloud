@@ -1,0 +1,12 @@
+FROM frolvlad/alpine-java:jdk8-slim
+
+RUN set -eux && mkdir -p /home/
+RUN set -eux && mkdir -p /home/auth-server
+RUN set -eux && mkdir -p /opt/logs/auth-server
+RUN set -eux && touch /opt/logs/auth-server/auth-server.log
+ADD auth-server.jar /home/auth-server/auth-server.jar
+
+ENV TZ=Asia/Shanghai
+ENV JAVA_ENV="-Denv=docker"
+ENV JAVA_OPTS="-server -Xmx256m -Xms256m -XX:+UseG1GC"
+ENTRYPOINT [ "sh", "-c", "java $JAVA_ENV $JAVA_OPTS -Dfile.encoding=UTF-8 -Djava.security.egd=file:/dev/./urandom -jar /home/auth-server/auth-server.jar" ]

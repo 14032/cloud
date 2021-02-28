@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cloud
+  labels:
+    app: auth-server
+  name: auth-server
+spec:
+  ports:
+  - name: tcp
+    port: 9096
+    protocol: TCP
+    targetPort: 9096
+  selector:
+    app: auth-server
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cloud
+  name: auth-server
+spec:
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-server
+  template: 
+    metadata:
+      namespace: cloud
+      labels:
+        app: auth-server
+        version: v1
+    spec:    
+      containers:
+      - name: auth-server
+        image: 11060/auth-server:20210228051042
+        resources:
+          limits:
+            memory: 536Mi
+          requests:
+            memory: 512Mi
+        ports:
+        - containerPort: 9096
+        volumeMounts:
+        - name: server-log
+          mountPath: /opt/logs/auth-server
+        livenessProbe:
+          tcpSocket:
+            port: 9096
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10          
+        readinessProbe:
+          tcpSocket:
+            port: 9096
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10
+      volumes:
+      - name: server-log
+        emptyDir: {}

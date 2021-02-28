@@ -1,0 +1,90 @@
+version: '3.3'
+services:
+  eureka-server:
+    image: 11060/eureka-server:20210228051833
+    container_name: eureka-server
+    restart: always
+    privileged: true
+    ports:
+      - 18761:18761
+    volumes:
+      - ./logs:/opt/logs
+    logging:
+      options:
+        max-size: "10M"
+        max-file: "10"
+  actuator-admin:
+    image: 11060/actuator-admin:20210228051207
+    container_name: actuator-admin
+    restart: always
+    privileged: true
+    depends_on:
+      - eureka-server
+    ports:
+      - 5000:5000
+    volumes:
+      - ./logs:/opt/logs
+    logging:
+      options:
+        max-size: "10M"
+        max-file: "10"
+  api-gateway:
+    image: 11060/api-gateway:20210228051021
+    container_name: api-gateway
+    restart: always
+    privileged: true
+    depends_on:
+      - actuator-admin
+    ports:
+      - 4000:4000
+    volumes:
+      - ./logs:/opt/logs
+    logging:
+      options:
+        max-size: "10M"
+        max-file: "10"
+  auth-server:
+    image: 11060/auth-server:20210228051042
+    container_name: auth-server
+    restart: always
+    privileged: true
+    depends_on:
+      - actuator-admin
+    ports:
+      - 9096:9096
+    volumes:
+      - ./logs:/opt/logs
+    logging:
+      options:
+        max-size: "10M"
+        max-file: "10"
+  user-server:
+    image: 11060/user-server:20210228051100
+    container_name: user-server
+    restart: always
+    privileged: true
+    depends_on:
+      - actuator-admin
+    ports:
+      - 9097:9097
+    volumes:
+      - ./logs:/opt/logs
+    logging:
+      options:
+        max-size: "10M"
+        max-file: "10"
+  order-server:
+    image: 11060/order-server:20210228051053
+    container_name: order-server
+    restart: always
+    privileged: true
+    depends_on:
+      - actuator-admin
+    ports:
+      - 9099:9099
+    volumes:
+      - ./logs:/opt/logs
+    logging:
+      options:
+        max-size: "10M"
+        max-file: "10"

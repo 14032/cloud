@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cloud
+  labels:
+    app: actuator-admin
+  name: actuator-admin
+spec:
+  ports:
+  - name: tcp
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+    nodePort: 32700
+  selector:
+    app: actuator-admin
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cloud
+  name: actuator-admin
+spec:
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actuator-admin
+  template: 
+    metadata:
+      namespace: cloud
+      labels:
+        app: actuator-admin
+        version: v1
+    spec:
+      containers:
+      - name: actuator-admin
+        image: 11060/actuator-admin:20210228051207
+        resources:
+          limits:
+            memory: 536Mi
+          requests:
+            memory: 512Mi
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: server-log
+          mountPath: /opt/logs/actuator-admin
+        livenessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10          
+        readinessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10
+      volumes:
+      - name: server-log
+        emptyDir: {}

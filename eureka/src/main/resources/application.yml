@@ -1,0 +1,34 @@
+server:
+  port: ${PORT:18761}
+
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: aAuHAd
+      password: aAuHAd
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+  client:
+    serviceUrl:
+      defaultZone: http://aAuHAd:aAuHAd@localhost:${server.port}/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+  server:
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 60000
+    peer-node-read-timeout-ms: 60000
+    response-cache-update-interval-ms: 15
+
+ribbon:
+  eager-load:
+    enabled: true
+
+

@@ -1,0 +1,11 @@
+# https://istio.io/latest/zh/docs/setup/install/istioctl/#customizing-the-configuration
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: cloud-istio-operator
+spec:
+  profile: demo
+  meshConfig:
+    accessLogFile: /dev/stdout
+    accessLogEncoding: TEXT

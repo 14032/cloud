@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: cloud
+  name: cloud-ingress
+spec:
+  rules:
+    - host: viewhub.cn
+      http:
+        paths:
+          - path: /user
+            pathType: Prefix
+            backend:
+              service:
+                name: user-server
+                port:
+                  number: 9097
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-server
+                port:
+                  number: 9096
+          - path: /order
+            pathType: Prefix
+            backend:
+              service:
+                name: order-server
+                port:
+                  number: 9099
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: eureka-server
+                port:
+                  number: 18761

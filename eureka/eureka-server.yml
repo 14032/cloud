@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cloud
+  labels:
+    app: eureka-server
+  name: eureka-server
+spec:
+  ports:
+  - name: tcp
+    port: 18761
+    protocol: TCP
+    targetPort: 18761
+    nodePort: 31000
+  selector:
+    app: eureka-server
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cloud
+  name: eureka-server
+spec:
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-server
+  template: 
+    metadata:
+      namespace: cloud
+      labels:
+        app: eureka-server
+        version: v1
+    spec:    
+      containers:
+      - name: eureka-server
+        image: 11060/eureka-server:20210228051833
+        resources:
+          limits:
+            memory: 536Mi
+          requests:
+            memory: 512Mi
+        ports:
+        - containerPort: 18761
+        volumeMounts:
+        - name: server-log
+          mountPath: /opt/logs/eureka-server
+        livenessProbe:
+          tcpSocket:
+            port: 18761
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10          
+        readinessProbe:
+          tcpSocket:
+            port: 18761
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 10
+      volumes:
+      - name: server-log
+        emptyDir: {}

@@ -1,0 +1,93 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: cloud-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - 47.103.80.230
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: user
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - cloud-gateway
+  http:
+#  - headers:
+#      response:
+#        set:
+#          cloud: Istio & Kubernetes
+#    route:
+#    - destination:
+#        port:
+#          number: 9096
+#        host: auth-server.cloud.svc.cluster.local
+  - match:
+    - uri:
+        exact: /
+    - uri:
+        exact: /login
+    - uri:
+        exact: /logout
+    - uri:
+        prefix: /eureka
+    - uri:
+        prefix: /lastn
+    route:
+    - destination:
+        port:
+          number: 18761
+        host: eureka-server.cloud.svc.cluster.local
+  - match:
+    - uri:
+        prefix: /user
+    route:
+    - destination:
+        port:
+          number: 9097
+        host: user-server.cloud.svc.cluster.local
+    timeout: 10s
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+  - match:
+    - uri:
+        prefix: /order
+    route:
+    - destination:
+        port:
+          number: 9099
+        host: order-server.cloud.svc.cluster.local
+    timeout: 10s
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: gateway-error,connect-failure,refused-stream
+  - match:
+    - uri:
+        prefix: /auth
+    route:
+    - destination:
+        port:
+          number: 9096
+        host: auth-server.cloud.svc.cluster.local
+  - match:
+    - uri:
+        prefix: /api/auth
+    rewrite:
+      uri: /auth
+    route:
+    - destination:
+        host: auth-server.cloud.svc.cluster.local
+        port:
+          number: 9096

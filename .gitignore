@@ -1,0 +1,17 @@
+*.class
+**/target
+**/WEB-INF/classes
+**/logs/*.log*
+
+.classpath
+.project
+
+.idea
+*.ipr
+*.iml
+*.iws
+
+.DS_Store
+Thumbs.db
+
+**/temp

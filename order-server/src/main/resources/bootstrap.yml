@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: order-server
+  profiles:
+    active: ${env}
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
