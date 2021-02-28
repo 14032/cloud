@@ -5,6 +5,10 @@
 <br><br>
 <a title="Build Status" target="_blank" href="https://travis-ci.com/14032/cloud"><img src="https://img.shields.io/travis/14032/cloud.svg?style=flat-square"></a>
 <a title="MIT" target="_blank" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square"></a>
+<br>
+<a title="Kubernetes" target="_blank" href="https://kubernetes.io/docs/home/"><img src="https://img.shields.io/badge/kubernetes-1.19.0-blue?style=flat-square"></a>
+<a title="Istio" target="_blank" href="https://istio.io/"><img src="https://img.shields.io/badge/istio-1.9-yellow?style=flat-square"></a>
+<a title="Spring Cloud" target="_blank" href="https://cloud.spring.io/spring-cloud-gateway/reference/html/"><img src="https://img.shields.io/badge/springcloud-Greenwich-brightgreen?style=flat-square"></a>
 <br><br>
 <a title="GitHub Watchers" target="_blank" href="https://github.com/14032/cloud/watchers"><img src="https://img.shields.io/github/watchers/14032/cloud.svg?label=Watchers&style=social"></a>  
 <a title="GitHub Stars" target="_blank" href="https://github.com/14032/cloud/stargazers"><img src="https://img.shields.io/github/stars/14032/cloud.svg?label=Stars&style=social"></a>  
