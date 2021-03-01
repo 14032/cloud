@@ -45,7 +45,7 @@
 - [10]. Docker、Docker Compose、Harbor 的使用
 - [11]. 一键部署利器 Kubeadm 搭建 Kubernetes
 
-## :book: API GATEWAY
+## :book: API Gateway
 
 ![image](assets/swagger.jpg) 
 
