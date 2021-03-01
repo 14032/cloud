@@ -6,7 +6,11 @@ RUN set -eux && mkdir -p /opt/logs/auth-server
 RUN set -eux && touch /opt/logs/auth-server/auth-server.log
 ADD auth-server.jar /home/auth-server/auth-server.jar
 
-ENV TZ=Asia/Shanghai
-ENV JAVA_ENV="-Denv=docker"
-ENV JAVA_OPTS="-server -Xmx256m -Xms256m -XX:+UseG1GC"
-ENTRYPOINT [ "sh", "-c", "java $JAVA_ENV $JAVA_OPTS -Dfile.encoding=UTF-8 -Djava.security.egd=file:/dev/./urandom -jar /home/auth-server/auth-server.jar" ]
+COPY entrypoint.sh /home/auth-server/entrypoint.sh
+RUN chmod +x /home/auth-server/entrypoint.sh
+
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
+ENTRYPOINT ["/tini", "--", "/home/auth-server/entrypoint.sh"]

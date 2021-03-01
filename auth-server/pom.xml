@@ -8,7 +8,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>auth-server</artifactId>
 
     <dependencies>
@@ -19,7 +18,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -87,7 +85,7 @@
                             <serverId>docker-hub</serverId>
                             <dockerHost>${docker.host}</dockerHost>
                             <registryUrl>https://hub.docker.com/</registryUrl>
-                            <imageName>${repository.name}/${project.build.finalName}:${maven.build.timestamp}</imageName>
+                            <imageName>${repository.name}/${project.build.finalName}:${maven.build.timestamp}-tini</imageName>
                             <dockerDirectory>${project.basedir}</dockerDirectory>
                             <resources>
                                 <resource>
@@ -97,7 +95,7 @@
                                 </resource>
                             </resources>
                             <imageTags>
-                                <imageTag>${maven.build.timestamp}</imageTag>
+                                <imageTag>${maven.build.timestamp}-tini</imageTag>
                             </imageTags>
                             <forceTags>true</forceTags>
                             <pushImage>${push.image}</pushImage>

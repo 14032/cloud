@@ -40,7 +40,7 @@ spec:
     spec:    
       containers:
       - name: auth-server
-        image: 11060/auth-server:20210228051042
+        image: 11060/auth-server:20210301110125-tini
         resources:
           limits:
             memory: 536Mi
