@@ -10,10 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Slf4j
+@Component
 public class SsoAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<SsoAuthGatewayFilterFactory.Config> {
 
     public static final String ENABLED_KEY = "enabled";

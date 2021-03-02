@@ -22,7 +22,7 @@ spring:
         - AddResponseHeader=X-Response-Default, Spring Cloud Gateway
       discovery:
         locator:
-          enabled: true
+          enabled: false
           lowerCaseServiceId: true
 
       routes:
@@ -62,4 +62,4 @@ logging:
     org:
       springframework:
         cloud:
-          gateway: trace
+          gateway: warn

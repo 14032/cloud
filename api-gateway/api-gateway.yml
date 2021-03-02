@@ -41,7 +41,7 @@ spec:
     spec:    
       containers:
       - name: api-gateway
-        image: 11060/api-gateway:20210228124720
+        image: 11060/api-gateway:20210302144009
         resources:
           limits:
             memory: 536Mi

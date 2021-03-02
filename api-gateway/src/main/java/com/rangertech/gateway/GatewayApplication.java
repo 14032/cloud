@@ -16,8 +16,4 @@ public class GatewayApplication {
         SpringApplication.run(GatewayApplication.class, args);
     }
 
-    @Bean
-    public SsoAuthGatewayFilterFactory ssoAuthGatewayFilterFactory(){
-        return new SsoAuthGatewayFilterFactory();
-    }
 }

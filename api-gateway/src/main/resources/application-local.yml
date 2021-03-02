@@ -22,7 +22,7 @@ spring:
         - AddResponseHeader=X-Response-Default, Spring Cloud Gateway
       discovery:
         locator:
-          enabled: true
+          enabled: false
           lowerCaseServiceId: true
 
       routes:
@@ -32,7 +32,6 @@ spring:
             - Path=/user-server/**
           filters:
             - StripPrefix=1
-            - SsoAuth=true
 
         - id: auth-server
           uri: lb://auth-server
@@ -61,4 +60,4 @@ logging:
     org:
       springframework:
         cloud:
-          gateway: trace
+          gateway: warn
