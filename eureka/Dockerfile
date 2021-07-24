@@ -7,5 +7,5 @@ RUN set -eux && touch /opt/logs/eureka-server/eureka-server.log
 ADD eureka-server.jar /home/eureka-server/eureka-server.jar
 
 ENV TZ=Asia/Shanghai
-ENV JAVA_OPTS="-server -Xmx256m -Xms256m -XX:+UseG1GC"
+ENV JAVA_OPTS="-server -Xmx256m -Xms256m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:/opt/logs/gc.log"
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Dfile.encoding=UTF-8 -Djava.security.egd=file:/dev/./urandom -jar /home/eureka-server/eureka-server.jar" ]

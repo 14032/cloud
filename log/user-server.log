@@ -1,0 +1,22 @@
+07-24 21:11:45.736 INFO  [com.rangertech.basics.UserApplication  ] - The following profiles are active: kubernetes,docker
+07-24 21:11:47.480 INFO  [o.apache.catalina.core.StandardService ] - Starting service [Tomcat]
+07-24 21:11:47.480 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.33]
+07-24 21:11:47.532 INFO  [o.a.c.c.C.[Tomcat].[localhost].[/]     ] - Initializing Spring embedded WebApplicationContext
+07-24 21:11:48.624 WARN  [c.n.c.sources.URLConfigurationSource   ] - No URLs will be polled as dynamic configuration sources.
+07-24 21:11:48.624 INFO  [c.n.c.sources.URLConfigurationSource   ] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+07-24 21:11:48.632 WARN  [c.n.c.sources.URLConfigurationSource   ] - No URLs will be polled as dynamic configuration sources.
+07-24 21:11:48.632 INFO  [c.n.c.sources.URLConfigurationSource   ] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+07-24 21:11:49.083 INFO  [s.d.s.w.PropertySourcedRequestMappingHandlerMapping] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+07-24 21:11:49.250 INFO  [s.d.s.w.p.DocumentationPluginsBootstrapper] - Context refreshed
+07-24 21:11:49.267 INFO  [s.d.s.w.p.DocumentationPluginsBootstrapper] - Found 1 custom documentation plugin(s)
+07-24 21:11:49.317 INFO  [s.d.s.w.s.ApiListingReferenceScanner   ] - Scanning for api listing references
+07-24 21:11:49.499 INFO  [com.rangertech.basics.UserApplication  ] - Started UserApplication in 5.91 seconds (JVM running for 6.395)
+07-24 21:12:17.271 INFO  [o.a.c.c.C.[Tomcat].[localhost].[/]     ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+07-24 21:13:09.238 INFO  [c.netflix.config.ChainedDynamicProperty] - Flipping property: auth-server.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+07-24 21:13:09.265 INFO  [c.netflix.loadbalancer.BaseLoadBalancer] - Client: auth-server instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=auth-server,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+07-24 21:13:09.271 INFO  [c.n.l.DynamicServerListLoadBalancer    ] - Using serverListUpdater PollingServerListUpdater
+07-24 21:13:09.306 INFO  [c.netflix.config.ChainedDynamicProperty] - Flipping property: auth-server.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+07-24 21:13:09.308 INFO  [c.n.l.DynamicServerListLoadBalancer    ] - DynamicServerListLoadBalancer for client auth-server initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=auth-server,current list of Servers=[auth-server.cloud.svc.cluster.local:9096],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:auth-server.cloud.svc.cluster.local:9096;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.kubernetes.ribbon.KubernetesServicesServerList@7d6562f2
+07-24 21:13:10.278 INFO  [c.netflix.config.ChainedDynamicProperty] - Flipping property: auth-server.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647

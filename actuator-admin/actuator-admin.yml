@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: actuator-admin
-        image: 11060/actuator-admin:20210228051207
+        image: 11060/actuator-admin:20210724125907
         resources:
           limits:
             memory: 536Mi
@@ -68,6 +68,7 @@ spec:
           failureThreshold: 3
           successThreshold: 1
           timeoutSeconds: 10
+      serviceAccountName: cloud-account
       volumes:
       - name: server-log
         emptyDir: {}

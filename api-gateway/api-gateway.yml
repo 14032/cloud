@@ -41,7 +41,7 @@ spec:
     spec:    
       containers:
       - name: api-gateway
-        image: 11060/api-gateway:20210302144009
+        image: 11060/api-gateway:20210724125912
         resources:
           limits:
             memory: 536Mi
@@ -68,6 +68,7 @@ spec:
           failureThreshold: 3
           successThreshold: 1
           timeoutSeconds: 10
+      serviceAccountName: cloud-account
       volumes:
       - name: server-log
         emptyDir: {}

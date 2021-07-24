@@ -1,0 +1,394 @@
+//[root@k8s001 docker]# curl http://127.0.0.1:8080/api/v1/namespaces/cloud/services
+{
+  "kind": "ServiceList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/namespaces/cloud/services",
+    "resourceVersion": "47599"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "actuator-admin",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/services/actuator-admin",
+        "uid": "84212095-fe61-4875-abd8-bc4e7ce2db9d",
+        "resourceVersion": "41633",
+        "creationTimestamp": "2021-07-24T11:59:01Z",
+        "labels": {
+          "app": "actuator-admin"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"actuator-admin\"},\"name\":\"actuator-admin\",\"namespace\":\"cloud\"},\"spec\":{\"ports\":[{\"name\":\"tcp\",\"nodePort\":32700,\"port\":5000,\"protocol\":\"TCP\",\"targetPort\":5000}],\"selector\":{\"app\":\"actuator-admin\"},\"type\":\"NodePort\"}}\n"
+        },
+        "managedFields": [
+          {
+            "manager": "kubectl-client-side-apply",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T11:59:01Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:spec": {
+                "f:externalTrafficPolicy": {},
+                "f:ports": {
+                  ".": {},
+                  "k:{\"port\":5000,\"protocol\":\"TCP\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:nodePort": {},
+                    "f:port": {},
+                    "f:protocol": {},
+                    "f:targetPort": {}
+                  }
+                },
+                "f:selector": {
+                  ".": {},
+                  "f:app": {}
+                },
+                "f:sessionAffinity": {},
+                "f:type": {}
+              }
+            }
+          }
+        ]
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "tcp",
+            "protocol": "TCP",
+            "port": 5000,
+            "targetPort": 5000,
+            "nodePort": 32700
+          }
+        ],
+        "selector": {
+          "app": "actuator-admin"
+        },
+        "clusterIP": "10.110.78.225",
+        "type": "NodePort",
+        "sessionAffinity": "None",
+        "externalTrafficPolicy": "Cluster"
+      },
+      "status": {
+        "loadBalancer": {
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "api-gateway",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/services/api-gateway",
+        "uid": "51d70ccf-8290-415e-bd4c-cd50bba3b56f",
+        "resourceVersion": "39819",
+        "creationTimestamp": "2021-07-24T11:46:38Z",
+        "labels": {
+          "app": "api-gateway"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"api-gateway\"},\"name\":\"api-gateway\",\"namespace\":\"cloud\"},\"spec\":{\"ports\":[{\"name\":\"tcp\",\"nodePort\":32000,\"port\":4000,\"protocol\":\"TCP\",\"targetPort\":4000}],\"selector\":{\"app\":\"api-gateway\"},\"type\":\"NodePort\"}}\n"
+        },
+        "managedFields": [
+          {
+            "manager": "kubectl-client-side-apply",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T11:46:38Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:spec": {
+                "f:externalTrafficPolicy": {},
+                "f:ports": {
+                  ".": {},
+                  "k:{\"port\":4000,\"protocol\":\"TCP\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:nodePort": {},
+                    "f:port": {},
+                    "f:protocol": {},
+                    "f:targetPort": {}
+                  }
+                },
+                "f:selector": {
+                  ".": {},
+                  "f:app": {}
+                },
+                "f:sessionAffinity": {},
+                "f:type": {}
+              }
+            }
+          }
+        ]
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "tcp",
+            "protocol": "TCP",
+            "port": 4000,
+            "targetPort": 4000,
+            "nodePort": 32000
+          }
+        ],
+        "selector": {
+          "app": "api-gateway"
+        },
+        "clusterIP": "10.102.13.19",
+        "type": "NodePort",
+        "sessionAffinity": "None",
+        "externalTrafficPolicy": "Cluster"
+      },
+      "status": {
+        "loadBalancer": {
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "auth-server",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/services/auth-server",
+        "uid": "10ad645c-12cb-4d4b-bcfe-25d3375ef239",
+        "resourceVersion": "2977",
+        "creationTimestamp": "2021-07-24T07:32:07Z",
+        "labels": {
+          "app": "auth-server"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"auth-server\"},\"name\":\"auth-server\",\"namespace\":\"cloud\"},\"spec\":{\"ports\":[{\"name\":\"tcp\",\"port\":9096,\"protocol\":\"TCP\",\"targetPort\":9096}],\"selector\":{\"app\":\"auth-server\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "managedFields": [
+          {
+            "manager": "kubectl-client-side-apply",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T07:32:07Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:spec": {
+                "f:ports": {
+                  ".": {},
+                  "k:{\"port\":9096,\"protocol\":\"TCP\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:port": {},
+                    "f:protocol": {},
+                    "f:targetPort": {}
+                  }
+                },
+                "f:selector": {
+                  ".": {},
+                  "f:app": {}
+                },
+                "f:sessionAffinity": {},
+                "f:type": {}
+              }
+            }
+          }
+        ]
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "tcp",
+            "protocol": "TCP",
+            "port": 9096,
+            "targetPort": 9096
+          }
+        ],
+        "selector": {
+          "app": "auth-server"
+        },
+        "clusterIP": "10.106.61.46",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "order-server",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/services/order-server",
+        "uid": "5859096a-5ea9-42c4-842e-cf347db4af83",
+        "resourceVersion": "3048",
+        "creationTimestamp": "2021-07-24T07:32:16Z",
+        "labels": {
+          "app": "order-server"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"order-server\"},\"name\":\"order-server\",\"namespace\":\"cloud\"},\"spec\":{\"ports\":[{\"name\":\"tcp\",\"port\":9099,\"protocol\":\"TCP\",\"targetPort\":9099}],\"selector\":{\"app\":\"order-server\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "managedFields": [
+          {
+            "manager": "kubectl-client-side-apply",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T07:32:16Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:spec": {
+                "f:ports": {
+                  ".": {},
+                  "k:{\"port\":9099,\"protocol\":\"TCP\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:port": {},
+                    "f:protocol": {},
+                    "f:targetPort": {}
+                  }
+                },
+                "f:selector": {
+                  ".": {},
+                  "f:app": {}
+                },
+                "f:sessionAffinity": {},
+                "f:type": {}
+              }
+            }
+          }
+        ]
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "tcp",
+            "protocol": "TCP",
+            "port": 9099,
+            "targetPort": 9099
+          }
+        ],
+        "selector": {
+          "app": "order-server"
+        },
+        "clusterIP": "10.111.242.37",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "user-server",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/services/user-server",
+        "uid": "caf0f639-b434-4c05-a4ec-7227c396b340",
+        "resourceVersion": "3017",
+        "creationTimestamp": "2021-07-24T07:32:11Z",
+        "labels": {
+          "app": "user-server"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"user-server\"},\"name\":\"user-server\",\"namespace\":\"cloud\"},\"spec\":{\"ports\":[{\"name\":\"tcp\",\"port\":9097,\"protocol\":\"TCP\",\"targetPort\":9097}],\"selector\":{\"app\":\"user-server\"},\"type\":\"ClusterIP\"}}\n"
+        },
+        "managedFields": [
+          {
+            "manager": "kubectl-client-side-apply",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T07:32:11Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:spec": {
+                "f:ports": {
+                  ".": {},
+                  "k:{\"port\":9097,\"protocol\":\"TCP\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:port": {},
+                    "f:protocol": {},
+                    "f:targetPort": {}
+                  }
+                },
+                "f:selector": {
+                  ".": {},
+                  "f:app": {}
+                },
+                "f:sessionAffinity": {},
+                "f:type": {}
+              }
+            }
+          }
+        ]
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "tcp",
+            "protocol": "TCP",
+            "port": 9097,
+            "targetPort": 9097
+          }
+        ],
+        "selector": {
+          "app": "user-server"
+        },
+        "clusterIP": "10.99.114.28",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {
+        }
+      }
+    }
+  ]
+}

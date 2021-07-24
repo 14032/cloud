@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
+        <version>2.2.6.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -22,13 +22,14 @@
         <skip.source>true</skip.source>
         <skip.javadoc>true</skip.javadoc>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
 
         <docker.host>http://ip:2375</docker.host>
         <repository.name>11060</repository.name>
-        <push.image>false</push.image>
+        <push.image>true</push.image>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
@@ -53,6 +54,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- spring cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

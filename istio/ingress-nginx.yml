@@ -53,7 +53,7 @@ rules:
       - ''
     resources:
       - configmaps
-      - endpoints
+      - endpoints.json
       - nodes
       - pods
       - secrets
@@ -152,7 +152,7 @@ rules:
       - configmaps
       - pods
       - secrets
-      - endpoints
+      - endpoints.json
     verbs:
       - get
       - list

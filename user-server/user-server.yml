@@ -40,7 +40,7 @@ spec:
     spec:    
       containers:
       - name: user-server
-        image: 11060/user-server:20210228051100
+        image: 11060/user-server:20210724125932
         resources:
           limits:
             memory: 536Mi
@@ -67,6 +67,7 @@ spec:
           failureThreshold: 3
           successThreshold: 1
           timeoutSeconds: 10
+      serviceAccountName: cloud-account
       volumes:
       - name: server-log
         emptyDir: {}

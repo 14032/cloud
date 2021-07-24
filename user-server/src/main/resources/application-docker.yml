@@ -3,19 +3,35 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://aAuHAd:aAuHAd@eureka-server:18761/eureka/
-    registerWithEureka: true
-    fetchRegistry: true
-    registry-fetch-interval-seconds: 15
-  instance:
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 15
-    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://aAuHAd:aAuHAd@eureka-server:18761/eureka/
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    registry-fetch-interval-seconds: 15
+#  instance:
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 5
+#    lease-expiration-duration-in-seconds: 15
+#    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+
+# spring cloud kubernetes
+spring:
+  cloud:
+    kubernetes:
+      discovery:
+        service-name: ${spring.application.name}
+        all-namespaces: true
+#      loadbalancer:
+#        mode: service
+#        cluster-domain: cluster.local
+#        enabled: true
+      ribbon:
+        enabled: true
+        mode: service
+        cluster-domain: cluster.local
 
 cloud:
   swagger:

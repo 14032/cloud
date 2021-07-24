@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cloud-account
+  namespace: cloud
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cloud-account
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  # k8s 内置的集群角色 cluster-admin、admin、edit、view
+  name: view
+subjects:
+  - kind: ServiceAccount
+    name: cloud-account
+    namespace: cloud

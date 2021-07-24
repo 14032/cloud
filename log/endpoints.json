@@ -1,0 +1,307 @@
+// [root@k8s001 docker]# curl http://127.0.0.1:8080/api/v1/namespaces/cloud/endpoints
+{
+  "kind": "EndpointsList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/namespaces/cloud/endpoints",
+    "resourceVersion": "47183"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "actuator-admin",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/endpoints/actuator-admin",
+        "uid": "6e82de25-bb9b-4055-ac06-8b5c538e1b5c",
+        "resourceVersion": "44034",
+        "creationTimestamp": "2021-07-24T11:59:01Z",
+        "labels": {
+          "app": "actuator-admin"
+        },
+        "managedFields": [
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T12:15:18Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:subsets": {}
+            }
+          }
+        ]
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.244.0.4",
+              "nodeName": "k8s001",
+              "targetRef": {
+                "kind": "Pod",
+                "namespace": "cloud",
+                "name": "actuator-admin-68bb8b54cf-crmvc",
+                "uid": "e0aba7b0-a280-4f73-9b04-fb4d8f283882",
+                "resourceVersion": "44009"
+              }
+            }
+          ],
+          "ports": [
+            {
+              "name": "tcp",
+              "port": 5000,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "api-gateway",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/endpoints/api-gateway",
+        "uid": "dfe9998d-f9d3-444e-b2a4-0270b4ab3b81",
+        "resourceVersion": "46808",
+        "creationTimestamp": "2021-07-24T11:46:38Z",
+        "labels": {
+          "app": "api-gateway"
+        },
+        "managedFields": [
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T12:34:51Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:subsets": {}
+            }
+          }
+        ]
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.244.1.32",
+              "nodeName": "k8s002",
+              "targetRef": {
+                "kind": "Pod",
+                "namespace": "cloud",
+                "name": "api-gateway-567f7c4bdf-snrpj",
+                "uid": "51669642-72e6-4687-a767-e6383ec40e0e",
+                "resourceVersion": "46788"
+              }
+            }
+          ],
+          "ports": [
+            {
+              "name": "tcp",
+              "port": 4000,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "auth-server",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/endpoints/auth-server",
+        "uid": "6c648013-bca1-4e82-9298-e5c21bd3a5f2",
+        "resourceVersion": "40243",
+        "creationTimestamp": "2021-07-24T07:32:07Z",
+        "labels": {
+          "app": "auth-server"
+        },
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2021-07-24T11:49:05Z"
+        },
+        "managedFields": [
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T11:49:05Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:endpoints.kubernetes.io/last-change-trigger-time": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:subsets": {}
+            }
+          }
+        ]
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.244.1.26",
+              "nodeName": "k8s002",
+              "targetRef": {
+                "kind": "Pod",
+                "namespace": "cloud",
+                "name": "auth-server-5b488447df-ldt6p",
+                "uid": "93168467-1f71-4aad-b202-6474175478a9",
+                "resourceVersion": "40241"
+              }
+            }
+          ],
+          "ports": [
+            {
+              "name": "tcp",
+              "port": 9096,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "order-server",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/endpoints/order-server",
+        "uid": "c3688ea8-b9b8-4bc6-9d9e-17dbf04b567b",
+        "resourceVersion": "40287",
+        "creationTimestamp": "2021-07-24T07:32:16Z",
+        "labels": {
+          "app": "order-server"
+        },
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2021-07-24T11:49:20Z"
+        },
+        "managedFields": [
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T11:49:20Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:endpoints.kubernetes.io/last-change-trigger-time": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:subsets": {}
+            }
+          }
+        ]
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.244.1.28",
+              "nodeName": "k8s002",
+              "targetRef": {
+                "kind": "Pod",
+                "namespace": "cloud",
+                "name": "order-server-5c5ff5bf98-bb4w7",
+                "uid": "9db7ae83-9b4e-45a6-af6c-82224a7b1b89",
+                "resourceVersion": "40286"
+              }
+            }
+          ],
+          "ports": [
+            {
+              "name": "tcp",
+              "port": 9099,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "user-server",
+        "namespace": "cloud",
+        "selfLink": "/api/v1/namespaces/cloud/endpoints/user-server",
+        "uid": "d107cd69-c9f7-4550-9ee9-2b754c2c8832",
+        "resourceVersion": "40282",
+        "creationTimestamp": "2021-07-24T07:32:11Z",
+        "labels": {
+          "app": "user-server"
+        },
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2021-07-24T11:49:19Z"
+        },
+        "managedFields": [
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2021-07-24T11:49:19Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:endpoints.kubernetes.io/last-change-trigger-time": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app": {}
+                }
+              },
+              "f:subsets": {}
+            }
+          }
+        ]
+      },
+      "subsets": [
+        {
+          "addresses": [
+            {
+              "ip": "10.244.1.27",
+              "nodeName": "k8s002",
+              "targetRef": {
+                "kind": "Pod",
+                "namespace": "cloud",
+                "name": "user-server-5d987bc568-cw5fd",
+                "uid": "9dc5bff1-7016-4183-96b2-d042754eba3a",
+                "resourceVersion": "40281"
+              }
+            }
+          ],
+          "ports": [
+            {
+              "name": "tcp",
+              "port": 9097,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+Name:         user-server-5d987bc568-rdtrs
+Namespace:    cloud
+Priority:     0
+Node:         k8s002/172.24.251.206
+Start Time:   Sat, 24 Jul 2021 19:29:49 +0800
+Labels:       app=user-server
+              pod-template-hash=5d987bc568
+              version=v1
+Annotations:  <none>
+Status:       Running
+IP:           10.244.1.24
+IPs:
+  IP:           10.244.1.24
+Controlled By:  ReplicaSet/user-server-5d987bc568
+Containers:
+  user-server:
+    Container ID:   docker://50acaef994da5621467449b1bb29f01d91b44d88fcad6ab6c9db741217dbe74c
+    Image:          11060/user-server:20210724092704
+    Image ID:       docker-pullable://11060/user-server@sha256:c887471f88e4a5aaac2c97a5a4facc1fb2eacedb7dc403678487b0b949f97f42
+    Port:           9097/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 24 Jul 2021 19:29:50 +0800
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  536Mi
+    Requests:
+      memory:     512Mi
+    Liveness:     tcp-socket :9097 delay=30s timeout=10s period=10s #success=1 #failure=3
+    Readiness:    tcp-socket :9097 delay=20s timeout=10s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /opt/logs/user-server from server-log (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from cloud-account-token-bv9j7 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  server-log:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  cloud-account-token-bv9j7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cloud-account-token-bv9j7
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  3m43s  default-scheduler  Successfully assigned cloud/user-server-5d987bc568-rdtrs to k8s002
+  Normal  Pulled     3m42s  kubelet, k8s002    Container image "11060/user-server:20210724092704" already present on machine
+  Normal  Created    3m42s  kubelet, k8s002    Created container user-server
+  Normal  Started    3m42s  kubelet, k8s002    Started container user-server
