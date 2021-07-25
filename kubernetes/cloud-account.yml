@@ -1,3 +1,4 @@
+# https://docs.spring.io/spring-cloud-kubernetes/docs/current/reference/html/#service-account
 apiVersion: v1
 kind: ServiceAccount
 metadata:
