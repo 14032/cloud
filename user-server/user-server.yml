@@ -67,6 +67,13 @@ spec:
           failureThreshold: 3
           successThreshold: 1
           timeoutSeconds: 10
+        startupProbe:
+          failureThreshold: 5
+          tcpSocket:
+            port: 9097
+          periodSeconds: 40
+          successThreshold: 1
+          timeoutSeconds: 10
       serviceAccountName: cloud-account
       volumes:
       - name: server-log

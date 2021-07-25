@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-java:jdk8-slim
+FROM azul/zulu-openjdk-centos:8u312
 
 RUN set -eux && mkdir -p /home/
 RUN set -eux && mkdir -p /home/auth-server

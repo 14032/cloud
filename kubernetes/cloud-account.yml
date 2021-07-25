@@ -1,4 +1,6 @@
 # https://docs.spring.io/spring-cloud-kubernetes/docs/current/reference/html/#service-account
+# https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/#accessing-the-api-from-a-pod
+# https://kubernetes.io/zh/docs/tasks/access-application-cluster/access-cluster/#accessing-the-api-from-a-pod
 apiVersion: v1
 kind: ServiceAccount
 metadata:
